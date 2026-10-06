@@ -3,7 +3,7 @@ import pandas as pd
 
 STEP = 10                                  # хв
 N_STEPS = int((21.5 - 7.5) * 60 // STEP)           # 84 кроки
-M = 4                                      # ліміт черги
+QUEUE_LIMIT = 4                                      # ліміт черги
 P_GEOM = 0.6                               # параметр геометричного розподілу
 STATION_COST = 200                         # грн/год
 
@@ -21,12 +21,4 @@ def get_lambda(hour):
             return period[2]
     return 0
 
-def generate_order():
-    drink_num = np.random.geometric(P_GEOM)
-    drink_types = np.random.choice(len(DRINKS), drink_num, p=PROBS)
-    total_time, price = 0, 0
-    for d in drink_types:
-        total_time += TIMES[d]
-        price += PRICES[d]
-    return (total_time, price)
 

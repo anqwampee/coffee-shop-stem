@@ -1,8 +1,7 @@
 import numpy as np
 from parameters import *
-from cafe import *
 
-class Statistics:
+class Stats:
     def __init__(self):
         self.clients = {"came":0, "served":0, "lost":0}
         self.revenue = 0.0
@@ -15,7 +14,7 @@ class Statistics:
     def add_lost(self):
         self.clients["lost"] += 1
 
-    def add_served(self, price, serving_time):
+    def add_served(self, serving_time, price):
         self.clients["served"] += 1
         self.revenue += price
         self.busy_time += serving_time
