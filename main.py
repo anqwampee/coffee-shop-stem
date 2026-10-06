@@ -1,6 +1,6 @@
 import numpy as np
-from parameters import get_lambda, generate_order
-
+from parameters import *
+from statistics import *
 
 def main():
     pass
