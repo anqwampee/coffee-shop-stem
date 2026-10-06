@@ -24,12 +24,15 @@ class Stats:
 
 
     def summary(self):
+        ingredients_cost = self.revenue * FOOD_COST_RATE
+        fixed_station_cost = STATION_COST * 14
+        total_cost = fixed_station_cost + ingredients_cost
         return {
             "loss rate": self.clients["lost"]/self.clients["came"],
             "average queue length": np.mean(self.queue_lengths) if len(self.queue_lengths) > 0 else 0.0,
             "maximum queue length": np.max(self.queue_lengths) if len(self.queue_lengths) > 0 else 0.0,
             "utilisation": self.busy_time/840,    # навантаження на хвилину
             "revenue": self.revenue,
-            "cost": STATION_COST * 14,
-            "profit": self.revenue - STATION_COST * 14
+            "cost": total_cost,
+            "profit": self.revenue - total_cost
         }
