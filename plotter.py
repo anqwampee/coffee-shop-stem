@@ -8,10 +8,6 @@ RESULTS_DIR = "results"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 def plot_single_run(queue_lengths):
-    """
-    Будує діаграму та гістограму для одного прогону моделі.
-    Зберігає їх у папку results.
-    """
     # 1. Діаграма (лінійний графік): Зміна довжини черги в часі
     plt.figure(figsize=(10, 5))
     plt.plot(queue_lengths, label="Довжина черги", color="blue", marker='o', markersize=3)

@@ -25,11 +25,11 @@ class Cafe:
                 self.stats.add_lost()
 
     def serve(self):
-        budget = STEP
-        while (0 < budget and self.current_order is not None):
-            if self.remaining_time <= budget:
+        step_border = STEP
+        while (0 < step_border and self.current_order is not None):
+            if self.remaining_time <= step_border:
                 self.stats.add_served(self.current_order.total_time, self.current_order.price)
-                budget -= self.remaining_time
+                step_border -= self.remaining_time
                 if self.queue:
                     self.current_order = self.queue.pop(0)
                     self.remaining_time = self.current_order.total_time
@@ -37,8 +37,7 @@ class Cafe:
                     self.current_order = None
                     self.remaining_time = 0
             else:
-                self.remaining_time -= budget
-                budget = 0
-
+                self.remaining_time -= step_border
+                step_border = 0
 
 
